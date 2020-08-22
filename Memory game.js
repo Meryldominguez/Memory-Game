@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded",createDivsForColors(shuffledColors)
 // TODO: Implement this function!
 function handleCardClick(event) {
 // you can use event.target to see which element was clicked
-    event.target.style.pointerEvents = "none";
+   
     event.target.style.backgroundColor = event.target.className;
     event.target.classList.add('clicked');
       if (clicked.length === 2){
@@ -73,18 +73,19 @@ function handleCardClick(event) {
         }
         // NO MATCH
         if (success === false){
-          gameContainer.style.pointerEvents = "auto";
+          gameContainer.style.pointerEvents = "none";
           setTimeout(function(){
             secondClick.style.removeProperty('background-color');
             firstClick.style.removeProperty ('background-color');
             secondClick.classList.remove('clicked');
             firstClick.classList.remove('clicked');
+            gameContainer.style.pointerEvents = "auto";
             },1000
             )
         isActivelyProcessing = false;
         }
       } 
-    event.target.style.removeProperty("pointer-events")
+
 }
     //reset the two cards
       // setTimeout(function(){
