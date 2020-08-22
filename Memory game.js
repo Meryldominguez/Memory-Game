@@ -1,19 +1,9 @@
 const gameContainer = document.getElementById("game");
 const matched = document.getElementsByClassName("matched");
-let isActivelyProcessing = false;
 const clicked = document.getElementsByClassName("clicked");
-const COLORS = [
-  "red",
-  "blue",
-  "green",
-  "orange",
-  "purple",
-  "red",
-  "blue",
-  "green",
-  "orange",
-  "purple"
-];
+const startbtn = document.querySelector("button");
+const COLORS = [];
+
 function shuffle(array) {
   let counter = array.length;
   // While there are elements in the array
@@ -28,9 +18,20 @@ function shuffle(array) {
     array[index] = temp;
   }
   return array;
+};
+
+function randomRGB() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`
 }
 
-let shuffledColors = shuffle(COLORS);
+function colorRandomizer(num){
+  for(let i = 0; i<=num; i++){
+    COLORS.push(randomRGB())
+  }
+}
 
 function createDivsForColors(colorArray) {
   for (let color of colorArray) {
@@ -42,11 +43,28 @@ function createDivsForColors(colorArray) {
     } 
     
   }
+};
+let shuffledColors = shuffle(COLORS);
+
+ //slider function
+ function rangeSlider(){
+  var range = document.querySelector('.range-slider__range'),
+      value = document.querySelector('.range-slider__value');
+  value.textContent = range.value;
+  range.oninput = function() {
+    value.innerHTML = this.value;
+};
 }
-// when the DOM loads
-document.addEventListener("DOMContentLoaded",createDivsForColors(shuffledColors));
+
+rangeSlider();
+
+//when the startbutton is clicked
+startbtn.addEventListener("click",function (e){
+  
+  createDivsForColors(shuffledColors);
 
 
+};
 
 // TODO: Implement this function!
 function handleCardClick(event) {
@@ -93,16 +111,3 @@ function handleCardClick(event) {
       // })
       //I DID IT ABOVE
       //
-
-
-      //slider function
-function rangeSlider(){
-  var range = document.querySelector('.range-slider__range'),
-      value = document.querySelector('.range-slider__value');
-  value.textContent = range.value;
-  range.oninput = function() {
-    value.innerHTML = this.value;
-};
-}
-
-rangeSlider();
