@@ -60,8 +60,8 @@ rangeSlider();
 
 //when the startbutton is clicked
 startbtn.addEventListener("click",function (e){
-  rangeSlider();
-  colorRandomizer(range.value);
+  e.preventDefault();
+  colorRandomizer(rangeSlider());
   createDivsForColors(shuffledColors);
 });
 
