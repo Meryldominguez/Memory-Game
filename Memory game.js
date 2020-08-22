@@ -29,7 +29,9 @@ function randomRGB() {
 
 function colorRandomizer(num){
   for(let i = 0; i<=num; i++){
-    COLORS.push(randomRGB())
+    let color = randomRGB();
+    COLORS.push(color);
+    COLORS.push(color);
   }
 }
 
@@ -38,10 +40,7 @@ function createDivsForColors(colorArray) {
     let newDiv = document.createElement("div");
     newDiv.classList.add(color);
     gameContainer.append(newDiv);
-    if (!isActivelyProcessing){
-      newDiv.addEventListener("click", handleCardClick);
-    } 
-    
+    newDiv.addEventListener("click", handleCardClick);
   }
 };
 let shuffledColors = shuffle(COLORS);
@@ -54,17 +53,17 @@ let shuffledColors = shuffle(COLORS);
   range.oninput = function() {
     value.innerHTML = this.value;
 };
+  return range.value
 }
-
 rangeSlider();
+
 
 //when the startbutton is clicked
 startbtn.addEventListener("click",function (e){
-  
+  rangeSlider();
+  colorRandomizer(range.value);
   createDivsForColors(shuffledColors);
-
-
-};
+});
 
 // TODO: Implement this function!
 function handleCardClick(event) {
