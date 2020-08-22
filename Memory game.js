@@ -92,3 +92,17 @@ function handleCardClick(event) {
 
       // })
       //I DID IT ABOVE
+      //
+
+
+      //slider function
+function rangeSlider(){
+  var range = document.querySelector('.range-slider__range'),
+      value = document.querySelector('.range-slider__value');
+  value.textContent = range.value;
+  range.oninput = function() {
+    value.innerHTML = this.value;
+};
+}
+
+rangeSlider();
