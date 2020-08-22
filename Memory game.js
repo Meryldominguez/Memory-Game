@@ -43,7 +43,7 @@ function createDivsForColors(colorArray) {
     newDiv.addEventListener("click", handleCardClick);
   }
 };
-let shuffledColors = shuffle(COLORS);
+
 
  //slider function
  function rangeSlider(){
@@ -62,6 +62,7 @@ rangeSlider();
 startbtn.addEventListener("click",function (e){
   e.preventDefault();
   colorRandomizer(rangeSlider());
+  let shuffledColors = shuffle(COLORS);
   createDivsForColors(shuffledColors);
 });
 
